@@ -150,34 +150,34 @@ PAUSE
 
 
 Insert into eleves (Num_eleve, nom, prenom, date_naissance, Poids, annee, sexe)
-Values (1, 'Brisefer', 'Benoit', '10-12-1978', 35,1, 'M') ;
+Values (1, 'Brisefer', 'Benoit', '10-DEC-1974', 35,1, 'M') ;
 
 Insert into eleves (Num_eleve, nom, prenom, date_naissance, Poids, annee, sexe)
-Values (2, 'GÃ©nial', 'Olivier', '10-04-1978', 42, 1, 'M') ;
+Values (2, 'GÃ©nial', 'Olivier', '10-APR-1978', 42, 1, 'M') ;
 
 Insert into eleves (num_eleve, nom, prenom, date_naissance, Poids, annee, sexe)
 Values (3, 'Jourdan', 'Gil', '28-06-1974', 72, 2, 'F') ;
 
 Insert into eleves (num_eleve, nom, prenom, date_naissance, Poids, annee, sexe)
-Values (4, 'Spring', 'Jerry', '16-02-1974', 78, 2, 'M') ;
+Values (4, 'Spring', 'Jerry', '16-FEB-1974', 78, 2, 'M') ;
 
 Insert into eleves (num_eleve, nom, prenom, date_naissance, Poids, annee, sexe)
-Values (5, 'Tsuno', 'Yoko', '29-10-1977', 45, 1, 'F') ;
+Values (5, 'Tsuno', 'Yoko', '29-NOV-1977', 45, 1, 'F') ;
 
 Insert into eleves (num_eleve, nom, prenom, date_naissance, Poids, annee, sexe)
-Values (6, 'Lebut', 'Marc', '29-04-1974', 75,2, 'M') ;
+Values (6, 'Lebut', 'Marc', '29-APR-1974', 75,2, 'M') ;
 
 Insert into eleves (num_eleve, nom, prenom, date_naissance, Poids, annee, sexe)
-Values (7, 'Lagaffe', 'Gaston', '08-04-1975', 61,1, 'M') ;
+Values (7, 'Lagaffe', 'Gaston', '08-APR-1975', 61,1, 'M') ;
 
 Insert into eleves (num_eleve, nom, prenom, date_naissance, Poids, annee, sexe)
-Values (8, 'Dubois', 'Robin', '20-04-1976', 60, 2, 'M') ;
+Values (8, 'Dubois', 'Robin', '20-APR-1976', 60, 2, 'M') ;
 
 Insert into eleves (num_eleve, nom, prenom, date_naissance, Poids, annee, sexe)
-Values (9, 'WalthÃ©ry', 'Natacha', '07-09-1977', 59,1, 'F') ;
+Values (9, 'WalthÃ©ry', 'Natacha', '07-SEP-1977', 59,1, 'F') ;
 
 Insert into eleves (num_eleve, nom, prenom, date_naissance, Poids, annee, sexe)
-Values (10, 'Danny', 'Buck', '15-02-1973', 82, 2, 'M') ;
+Values (10, 'Danny', 'Buck', '15-FEB-1973', 82, 2, 'M') ;
 
 
 Insert into cours (Num_cours, Nom, Nbheures, annee)
@@ -472,3 +472,5 @@ REM **************************************************************************
 REM **************************************************************************
 
 COMMIT;
+
+Select * from cours;
