@@ -197,28 +197,28 @@ Values (5, 'Analyse', 60,2) ;
 
 
 Insert into PROFESSEURS (Num_prof, nom , specialite, Date_entree, Der_prom, Salaire_base, Salaire_actuel)
-Values(1, 'Bottle', 'poÃ©sie', '01-10-1970', '01-10-1988', 2000000, 2600000) ;
+Values(1, 'Bottle', 'poÃ©sie', '01-OCT-1970', '01-OCT-1988', 2000000, 2600000) ;
 
 Insert into PROFESSEURS (Num_prof, nom , specialite, Date_entree, Der_prom, Salaire_base, Salaire_actuel)
-Values(2, 'Bolenov', 'rÃ©seau', '15-11-1968', '01-10-1998', 1900000, 2468000) ;
+Values(2, 'Bolenov', 'rÃ©seau', '15-NOV-1968', '01-OCT-1998', 1900000, 2468000) ;
 
 Insert into PROFESSEURS (Num_prof, nom , specialite, Date_entree, Der_prom, Salaire_base, Salaire_actuel)
-Values(3, 'Tonilaclasse', 'poo', '01-10-1979', '01-01-1989', 1900000, 2360000) ;
+Values(3, 'Tonilaclasse', 'poo', '01-OCT-1979', '01-JAN-1989', 1900000, 2360000) ;
 
 Insert into PROFESSEURS (Num_prof, nom , specialite, Date_entree, Der_prom, Salaire_base, Salaire_actuel)
-Values(4, 'Pastecnov', 'sql', '01-10-1975', '', 2500000, 2500000) ;
+Values(4, 'Pastecnov', 'sql', '01-OCT-1975', '', 2500000, 2500000) ;
 
 Insert into PROFESSEURS (Num_prof, nom , specialite, Date_entree, Der_prom, Salaire_base, Salaire_actuel)
-Values(5, 'Selector', 'sql', '15-10-1982', '01-10-1988', 1900000, 1900000) ;
+Values(5, 'Selector', 'sql', '15-OCT-1982', '01-OCT-1988', 1900000, 1900000) ;
 
 Insert into PROFESSEURS (Num_prof, nom , specialite, Date_entree, Der_prom, Salaire_base, Salaire_actuel)
-Values(6, 'Vilplusplus', 'poo', '25-04-1990', '05-06-1994', 1900000, 2200000) ;
+Values(6, 'Vilplusplus', 'poo', '25-APR-1990', '05-JUL-1994', 1900000, 2200000) ;
 
 Insert into PROFESSEURS (Num_prof, nom , specialite, Date_entree, Der_prom, Salaire_base, Salaire_actuel)
-Values(7, 'Francesca', '', '01-10-1975', '11-01-1998', 2000000, 3200000) ;
+Values(7, 'Francesca', '', '01-APR-1975', '11-JAN-1998', 2000000, 3200000) ;
 
 Insert into PROFESSEURS (Num_prof, nom , specialite, Date_entree, Der_prom, Salaire_base, Salaire_actuel)
-Values(8, 'Pucette', 'sql', '06-12-1988', '29-02-1996', 2000000, 2500000) ;
+Values(8, 'Pucette', 'sql', '06-DEC-1988', '29-FEB-1996', 2000000, 2500000) ;
 
 Insert into CHARGE (Num_prof, Num_cours)
 Values(1,1) ;
