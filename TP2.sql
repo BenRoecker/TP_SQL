@@ -8,3 +8,17 @@ alter table ELEVES add constraint gender_val check (sexe in ('f','F','m','M'));
 
 alter table PROFESSEURS add constraint Salary check (salaire_base <= salaire_actuel);
 
+connect benjamin;
+
+create or replace TRIGGER cannot_decrease 
+ BEFORE
+  UPDATE ON PROFESSEURS
+DECLARE
+ user_xcep EXCEPTION;
+ PRAGMA EXCEPTION_INIT( user_xcep, -20001 );
+BEGIN
+ WHEN (NEW.SALAIRE_ACTUEL <= OLD.SALAIRE_ACTUEL)
+  RAISE user_xcep;
+END;
+
+CREATE TABLE PROF_SPECIALITE (SPECIALITE VARCHAR2 (20), NB_PROFESSEURS NUMBER);
