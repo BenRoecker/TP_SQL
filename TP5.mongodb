@@ -78,11 +78,7 @@ db.COURS.insertMany([
   Annee : 2023
  }
 ])
+use("ECOLE");
+db.COURS.find({})
 
-
-
-
-
-
-
-
+db.PROFS.find({})
