@@ -1,5 +1,7 @@
 alter session set "_ORACLE_SCRIPT"=true;
-
+--------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------DDL---------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------
 CREATE TABLE ContratClient (dateDebut date, dateFin date, coefpoids number(10), coeftaille number(10), validity char(1), Clientraisonsocial number(10) NOT NULL, id number(10) GENERATED AS IDENTITY, PRIMARY KEY (id));
 CREATE TABLE Client (raisonsocial number(10) GENERATED AS IDENTITY, numeroregistre number(10), telephone number(10), adresseid number(10) NOT NULL, PRIMARY KEY (raisonsocial));
 CREATE TABLE Colis (poids number(10), taille number(10), numero char(10), Livraisonid number(10) NOT NULL, id number(10) GENERATED AS IDENTITY, Pointrelaisid number(10) NOT NULL, adresseid number(10), Done number(1) NOT NULL, PRIMARY KEY (id));
@@ -23,4 +25,25 @@ ALTER TABLE Livraison ADD CONSTRAINT FKLivraison592620 FOREIGN KEY (Clientraison
 ALTER TABLE Livraison ADD CONSTRAINT FKLivraison797213 FOREIGN KEY (LivreurID) REFERENCES Livreur (ID);
 ALTER TABLE Paiement ADD CONSTRAINT FKPaiement450209 FOREIGN KEY (Pointrelaisid) REFERENCES Pointrelais (id);
 
+--------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------Les données--------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------
 
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------Les Vues----------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+----------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------Procédure et fonction---------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------
