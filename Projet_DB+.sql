@@ -152,19 +152,6 @@ END;
 /
 
 
-CREATE OR REPLACE PROCEDURE genFatureClient 
-    (idFacture in int,
-    adressetorelaisFacture in int,
-    adressetoadresseFacture in int,
-    relaistoadresseFacture in int,
-    prixFacture in int,
-    paidFacture in int)
-AS
- ClientraisonsocialFacture NUMERIC(20);firstDayMounth DATE;
-BEGIN
-    SELECT into ClientraisonsocialFacture FROM FACTURE INNER JOIN CONTRATCLIENT Where Clientraisonsocial.id = FACTURE.id;
-    select trunc(sysdate, 'MM')firstday into firstDayMounth from dual;
-    INSERT INTO PAIEMENT(id, relaistoadresse, adressetorelais, adressetoadresse, PRIX, PAID, CLIENTRAISONSOCIAL)
-    VALUES (idFacture, relaistoadresseFacture, adressetorelaisFacture, adressetoadresseFacture, prixFacture, paidFacture, ClientraisonsocialFacture);
-END;
-/
+---------------------------------------------------------------------------
+-------------------------TRIGGER-------------------------------------------
+---------------------------------------------------------------------------
