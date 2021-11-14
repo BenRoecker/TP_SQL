@@ -28,21 +28,61 @@ ALTER TABLE Paiement ADD CONSTRAINT FKPaiement450209 FOREIGN KEY (Pointrelaisid)
 --------------------------------------------------------------------------------------------------------------------------
 -------------------------------------------Les données--------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------
-
-
-
-
-
-
-
+----Adresse
+INSERT INTO ADRESSE(ID,NUMERO, RUE, VILLE)
+VALUES(1,5,'Maurice DENIS','Saint-Germain-en-Laye');
+----Client
+INSERT INTO CLIENT(ADRESSEID,TELEPHONE)
+VALUES(1,0635103615);
+----Responsable
+INSERT INTO RESPONSABLE(NOM,PRENOM)
+VALUES('Renan','Josselin');
+----Departement
+INSERT INTO DEPARTEMENT(CODEPOSTAL,RESPONSABLENOM,RESPONSABLEPRENOM,NOM)
+VALUES(78,'Renan','Josselin','Yveline');
+----Livreur
+INSERT INTO LIVREUR(NOM,PRENOM,DEPARTEMENTCODEPOSTAL)
+Values('Sinsheimer','Alexandre',78);
+--Livraison
+INSERT INTO LIVRAISON(RECUP,LIVREURID,CLIENTRAISONSOCIAL,DATECREATION)
+VALUES(0,1,1,'12-DEC-2021');
+UPDATE LIVRAISON
+SET RECUP=1
+WHERE DATECREATION = '12-DEC-2021';
+--POINT RELAIS
+INSERT INTO POINTRELAIS(NUMERO,RUE,VILLE)
+VALUES(4,'De la Paix','Paris');
+--Colis
+INSERT INTO COLIS(LIVRAISONID,NUMERO,TAILLE,POIDS,DONE,POINTRELAISID)
+VALUES(1,'234GT567',30,30,0,1);
 ---------------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------Les Vues----------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------------
+---7
+Create or REPLACE VIEW nbrColisRelais
+AS
+Select 
+Count(COLIS.ID) "Total",
+POINTRELAIS.ID,
+Extract(MONTH FROM LIVRAISON.DateCreation) "Month"
+FROM
+PointRelais 
+INNER JOIN COLIS on COLIS.POINTRELAISID = POINTRELAIS.ID
+INNER JOIN Livraison on Colis.LIVRAISONID = LIVRAISON.ID
+GROUP BY POINTRELAIS.ID, Extract(MONTH FROM LIVRAISON.DateCreation); 
+---6
+CREATE or REPLACE VIEW LivraisonsEnCours
+AS
+SELECT
+COLIS.NUMERO,
+COLIS.ID
+FROM COLIS
+INNER JOIN Livraison on Colis.LIVRAISONID = LIVRAISON.ID
+WHERE COLIS.DONE = 0 AND LIVRAISON.RECUP = 1;
 
 
 
-
-
+select * from POINTRELAIS;
 
 ----------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------Procédure et fonction---------------------------------------------------------
