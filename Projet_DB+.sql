@@ -59,6 +59,31 @@ VALUES(2,'234GT568',30,39,0,1);
 ---------------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------Les Vues----------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------------
+--1
+CREATE or REPLACE VIEW ListClientActifs
+AS
+SELECT * FROM Client INNER JOIN ContratClient ON Client.raisonsocial = ContratClient.Clientraisonsocial WHERE ContratClient.validity = 1;
+--2
+CREATE or REPLACE VIEW ListRelaisActifs
+AS
+SELECT 
+POINTRELAIS.ID,
+POINTRELAIS.NUMERO,
+POINTRELAIS.RUE,
+POINTRELAIS.VILLE
+FROM 
+PointRelais 
+INNER JOIN Contratrelais ON PointRelais.id = Contratrelais.POINTRELAISID WHERE Contratrelais.validity = '0x1' ;
+--3
+CREATE or REPLACE VIEW ListeLivraison
+AS
+select * from Livraison where LIVRAISON.DATECREATION=(SELECT TRUNC(SYSDATE + 1) - 1/(246060) FROM DUAL) and livreurId = 1;
+--4
+CREATE or REPLACE VIEW nbrLIVRAISONS
+AS
+SELECT COUNT(LIVRAISON.ID) "NombreLivraison" 
+FROM Livraison 
+WHERE LIVRAISON.DATECREATION BETWEEN TO_DATE('2014/02/01', 'yyyy/mm/dd') AND TO_DATE ('2014/02/28', 'yyyy/mm/dd') AND LIVRAISON.LIVREURID= 1;
 ---5
 Create or REPLACE VIEW nbrColisRelais
 AS
@@ -99,3 +124,47 @@ select * from POINTRELAIS;
 ----------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------Procédure et fonction---------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------
+CREATE OR REPLACE PROCEDURE colisNouvelEtat 
+    (livrer in int,
+    MyId in int)
+AS
+BEGIN 
+    UPDATE COLIS
+    SET DONE = MyID
+    WHERE Livraisonid = MyId;
+END;
+/
+CREATE OR REPLACE PROCEDURE genPaiementRelais 
+(
+    datePaiement in date,
+    montantPaiement in int,
+    idPaiement in int
+)
+AS
+    PointrelaisidPaiement NUMERIC(20);firstDayMounth DATE;midMounth DATE;
+BEGIN 
+    SELECT Pointrelaisid INTO PointrelaisidPaiement FROM Paiement INNER JOIN Pointrelais on PAIEMENT.POINTRELAISID = POINTRELAIS.ID WHERE PAIEMENT.POINTRELAISID = POINTRELAIS.id;
+    select trunc(sysdate, 'MM')firstday INTO firstDayMounth from dual;
+    select trunc(last_DAY(sysdate))lastday INTO midMounth from dual;
+    INSERT INTO PAIEMENT("date", montant, id, POINTRELAISID)
+    VALUES (datePaiement,montantPaiement, idPaiement, PointrelaisidPaiement);
+END;
+/
+
+
+CREATE OR REPLACE PROCEDURE genFatureClient 
+    (idFacture in int,
+    adressetorelaisFacture in int,
+    adressetoadresseFacture in int,
+    relaistoadresseFacture in int,
+    prixFacture in int,
+    paidFacture in int)
+AS
+ ClientraisonsocialFacture NUMERIC(20);firstDayMounth DATE;
+BEGIN
+    SELECT into ClientraisonsocialFacture FROM FACTURE INNER JOIN CONTRATCLIENT Where Clientraisonsocial.id = FACTURE.id;
+    select trunc(sysdate, 'MM')firstday into firstDayMounth from dual;
+    INSERT INTO PAIEMENT(id, relaistoadresse, adressetorelais, adressetoadresse, PRIX, PAID, CLIENTRAISONSOCIAL)
+    VALUES (idFacture, relaistoadresseFacture, adressetorelaisFacture, adressetoadresseFacture, prixFacture, paidFacture, ClientraisonsocialFacture);
+END;
+/
